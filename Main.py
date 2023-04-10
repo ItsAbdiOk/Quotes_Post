@@ -1,7 +1,7 @@
 import requests
 import os
 import random
-from PIL import Image, ImageDraw, ImageFont, ImageEnhance
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageFilter
 import json
 from io import BytesIO
 import time
@@ -37,8 +37,8 @@ def download_photo(photo_url):
     bg_image = Image.open(BytesIO(photo_response.content))
     return bg_image
 
-def crop_photo(bg_image):
-    # Crop photo to square aspect ratio
+def crop_photo(bg_image,):
+    # Crop photo to square aspect ratio and blurry
     width, height = bg_image.size
     if width > height:
         left = (width - height) // 2
@@ -52,6 +52,7 @@ def crop_photo(bg_image):
         bottom = top + width
     bg_image = bg_image.crop((left, top, right, bottom))
     max_quote_height = int(bg_image.height * 0.75)
+    bg_image = bg_image.filter(ImageFilter.GaussianBlur(radius=6))
     return bg_image
 
 def adjust_brightness(bg_image, brightness_factor):
@@ -190,6 +191,6 @@ if __name__ == '__main__':
             Happy = input("Ideal Font Size?: ") if Happy != "yes" else "yes"
             Happy2 = input("Ideal Quote Size?: ") if Happy2 != "yes" else "yes"
             bg_image = new_bg_image
-    adjust_brightness(bg_image, brightness_factor)
-    bg_image.save("my_quote_image.png")
+    bg_image = adjust_brightness(bg_image)
+    bg_image.save("Complete Image.png")
     print("Done!")
