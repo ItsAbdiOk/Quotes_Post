@@ -167,6 +167,7 @@ if __name__ == '__main__':
     lines = split_quote(quote, max_line_length)
     new_lines = split_long_lines(lines, max_line_length)
     add_text_to_image(bg_image, new_lines, font_style, font_size, author , Author_size = 200)
+    A_size = 200
     bg_image.save("my_quote_image.png")
     Happy = input("Ideal Font Size?: ")
     Happy2 = input("Ideal Quote Size?: ")
