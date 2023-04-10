@@ -1,5 +1,5 @@
 # Image Quote Generator
-This is a Python script that generates an image quote by retrieving a random image from Unsplash and a random quote from the Stoic Quotes API. It then crops the image to a square aspect ratio and adds the quote as text to the center of the image.
+This is a Python script that generates an image quote by retrieving a random image from Unsplash and a random quote from the Stoic Quotes API. It then crops the image to a square aspect ratio and adds the quote as text to the center of the image and blurs the background photo.
 
 ## Dependencies
 This script requires the following Python packages:
